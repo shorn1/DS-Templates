@@ -100,19 +100,18 @@ typen findmax(BinNodepos p)
     return findmax(p->rch);
 }
 
-BinNodepos deletemin(BinNodepos p,BinNodepos o)
+BinNodepos deletemin(BinNodepos p)
 {
     if(!p->lch)
     {
-        BinNodepos t = p;
         if(p->fa->lch == p) p->fa->lch = p->rch;
         else p->fa->rch = p->rch;
         if(p->rch)            
             p->rch->fa = p->fa;
-        return t;
+        return p;
     }
     BinNodepos tmp;
-    tmp = deletemin(p->lch,p);
+    tmp = deletemin(p->lch);
     p->siz -= tmp->cnt;
     return tmp;
 }
@@ -130,9 +129,9 @@ BinNodepos del(BinNodepos p,typen k)
         }
         if(p->lch && p->rch)
         {
-            BinNodepos tmp= deletemin(p->rch,p);
-            swap(&tmp->key,&p->key);
-            swap(&tmp->cnt,&p->cnt);
+            BinNodepos tmp= deletemin(p->rch);
+            p->key = tmp->key;
+            p->cnt = tmp->cnt;
             free(tmp);
             return p;
         }
