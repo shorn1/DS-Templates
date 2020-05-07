@@ -16,13 +16,6 @@ struct BinNode
     BinNode* lch,*rch,*fa;
 };
 
-void swap(typen *a,typen *b)
-{
-    typen t = *a;
-    *a = *b;
-    *b = t;
-}
-
 BinNodepos insert(BinNodepos p,typen k,BinNodepos fa)
 {
     if(!p)
@@ -36,14 +29,8 @@ BinNodepos insert(BinNodepos p,typen k,BinNodepos fa)
     }
     ++p->siz;
     if(k == p->key) ++p->cnt;  
-    else if(k < p->key)
-    {
-        p->lch = insert(p->lch,k,p);    
-    }
-    else
-    {
-        p->rch = insert(p->rch,k,p);
-    }
+    else if(k < p->key) p->lch = insert(p->lch,k,p);    
+    else p->rch = insert(p->rch,k,p);
     return p;
 }
 
@@ -102,6 +89,7 @@ typen findmax(BinNodepos p)
 
 BinNodepos deletemin(BinNodepos p)
 {
+    BinNodepos tmp;
     if(!p->lch)
     {
         if(p->fa->lch == p) p->fa->lch = p->rch;
@@ -109,8 +97,7 @@ BinNodepos deletemin(BinNodepos p)
         if(p->rch)            
             p->rch->fa = p->fa;
         return p;
-    }
-    BinNodepos tmp;
+    }    
     tmp = deletemin(p->lch);
     p->siz -= tmp->cnt;
     return tmp;
