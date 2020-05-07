@@ -8,8 +8,13 @@
 
 | --------------------------Contents-------------------------- | --------------------------FileName-------------------------- |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 队列优化的Bellman-Ford算法（SPFA算法）| BellmanFord_Queue_Optimised(SPFA) |  
+| 二叉搜索树(数组版) | Binary_search_tree_Array |
+| 二叉搜索树(指针版)| Binary_search_tree_Pointer |
 | Dijkstra(堆优化) | Dijkstra |
 | Kmp字符串匹配 | Kmp |
+| Kruskal算法求最小生成树 | Kruskal |
+| Prim算法求最小生成树 | 	Prim |
 | 优先队列(二叉堆)(大根堆) | Priority_queue_binary_heap |
 | 优先队列(二叉堆)(自定义比较函数) | Priority_queue_binary_heap_cmp |
 | 队列(循环队列) | Queue |
