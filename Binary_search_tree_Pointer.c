@@ -45,34 +45,32 @@ BinNodepos find(BinNodepos p,typen k)
 
 BinNodepos succ(BinNodepos p)
 {
-    BinNodepos t = p;
-    if(t->rch)
+    if(p->rch)
     {
-        t = t->rch;
-        while(t->lch) t = t->lch;
+        p = p->rch;
+        while(p->lch) p = p->lch;
     }
     else
     {
-        while(t->fa && t->fa->rch == t) t = t->fa;
-        if(t->fa) t = t->fa;
+        while(p->fa && p->fa->rch == p) p = p->fa;
+        if(p->fa) p = p->fa;
     }
-    return t;
+    return p;
 }
 
 BinNodepos prev(BinNodepos p)
 {
-    BinNodepos t = p;
-    if(t->lch)
+    if(p->lch)
     {
-        t = t->lch;
-        while(t->rch) t = t->rch;
+        p = p->lch;
+        while(p->rch) p = p->rch;
     }
     else
     {
-        while(t->fa && t->fa->lch == t) t = t->fa;
-        if(t->fa) t = t->fa;
+        while(p->fa && p->fa->lch == p) p = p->fa;
+        if(p->fa) p = p->fa;
     }
-    return t;
+    return p;
 }
 
 typen findmin(BinNodepos p)
